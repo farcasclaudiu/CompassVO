@@ -1,6 +1,6 @@
 **Compass VO**
 
-Compass application for windows phone (8, 8.1) and windows mobile 10 that features an ***adjustable background map*** from a photo or a selected picture.
+Compass application for windows phone (8, 8.1) and windows mobile 10 that features ***adjustable background map*** from a photo or a selected picture.
 The compass needle works properly only on devices that contains magnetometer sensor.
 
 **Quick start**
