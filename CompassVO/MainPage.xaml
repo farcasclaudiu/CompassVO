@@ -1,29 +1,28 @@
-﻿<phone:PhoneApplicationPage xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
-                            x:Class="CompassVO.MainPage"
-                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                            xmlns:Preview="clr-namespace:Phone7.Fx.Preview;assembly=Phone7.Fx.Preview"
-                            xmlns:compass_orienteering="clr-namespace:CompassVO.Themes.compass_orienteering"
-                            xmlns:Views="clr-namespace:CompassVO.Views"
-                            xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71"
-                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-                            mc:Ignorable="d"
-                            d:DesignWidth="480"
-                            d:DesignHeight="768"
-                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
-                            FontSize="{StaticResource PhoneFontSizeNormal}"
-                            Foreground="{StaticResource PhoneForegroundBrush}"
-                            SupportedOrientations="Portrait"
-                            Orientation="Portrait"
-                            shell:SystemTray.IsVisible="True"
-                            Unloaded="PhoneApplicationPage_Unloaded"
-                            DataContext="{Binding Main, Source={StaticResource Locator}}"
-                            BackKeyPress="PhoneApplicationPage_BackKeyPress">
+﻿<phone:PhoneApplicationPage
+    x:Class="CompassVO.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Preview="clr-namespace:Phone7.Fx.Preview;assembly=Phone7.Fx.Preview"
+    xmlns:Views="clr-namespace:CompassVO.Views"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"
+    Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    Unloaded="PhoneApplicationPage_Unloaded"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    BackKeyPress="PhoneApplicationPage_BackKeyPress">
 
   <i:Interaction.Triggers>
     <i:EventTrigger EventName="Loaded">
@@ -113,43 +112,6 @@
 
       <Grid x:Name="compassContainer"
                   Opacity="{Binding CompasUIOpacity}">
-        <!--<compass_orienteering:compass_orienteering />-->
-        <!--<StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="lblAngleMagnetic"
-                           FontSize="28"
-                           Margin="6">Angle magnetic:</TextBlock>
-                <TextBlock x:Name="lblAngleMagneticValue"
-                           Margin="6"
-                           FontSize="28"
-                           Text="{Binding Path=MagneticHeading, Mode=OneWay, StringFormat='0'}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="lblAngleTrue"
-                           FontSize="28"
-                           Margin="6">Angle true:</TextBlock>
-                <TextBlock x:Name="lblAngleTrueValue"
-                           Margin="6"
-                           FontSize="28"
-                           Text="{Binding Path=TrueHeading, Mode=OneWay, StringFormat='0'}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="lblAngleMD"
-                           FontSize="28"
-                           Margin="6">Magnetic declination:</TextBlock>
-                <TextBlock x:Name="lblAngleMDValue"
-                           Margin="6"
-                           FontSize="28"
-                           Text="{Binding Path=MagneticDeclination, Mode=OneWay}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="lblAccuracy"
-                           FontSize="28"
-                           Margin="6">Accuracy:</TextBlock>
-                <TextBlock x:Name="lblAccuracyValue"
-                           Margin="6"
-                           FontSize="28"
-                           Text="{Binding Path=HeadingAccuracy, Mode=OneWay}" />
-            </StackPanel>-->
       </Grid>
 
       <Grid HorizontalAlignment="Stretch"
@@ -203,56 +165,20 @@
     </Grid>
 
     <!--Calibration UI-->
-    <telerikPrimitives:RadWindow x:Name="winCalibration"
-                                     IsFullScreen="True"
-                                     IsOpen="{Binding NeedsCalibration}"
-                                     IsClosedOnBackButton="False"
-                                     IsClosedOnOutsideTap="False">
+    <Grid x:Name="winCalibration"
+        Visibility="{Binding NeedsCalibration,Converter={StaticResource BooleanToVisibilityConverter}}">
       <Border Background="Black">
         <Views:compass_calibration x:Name="pnlCalibration"
                                            Width="380"
                                            Height="600" />
       </Border>
-    </telerikPrimitives:RadWindow>
+    </Grid>
 
     <!--app bar-->
     <Preview:BindableApplicationBar x:Name="AppBar"
                                         BarOpacity="0.8"
                                         IsMenuEnabled="True">
-      <!--<Preview:BindableApplicationBarIconButton Command="{Binding Main.BackPictureEdit, Mode=OneWay, Source={StaticResource Locator}}"
-                                                      IconUri="/Images/icon_background_white.png"
-                                                      IsEnabled="{Binding IsCompassMode}"
-                                                      Text="edit back" />
-            <Preview:BindableApplicationBarIconButton Command="{Binding Main.CompassDialEdit, Mode=OneWay, Source={StaticResource Locator}}"
-                                                      IconUri="/Images/icon_dial_white.png"
-                                                      IsEnabled="{Binding IsCompassMode}"
-                                                      Text="edit dial" />
-            <Preview:BindableApplicationBarIconButton Command="{Binding Main.ShowSettings, Mode=OneWay, Source={StaticResource Locator}}"
-                                                      IconUri="/Images/appbar.feature.settings.rest.png"
-                                                      IsEnabled="{Binding IsCompassMode}"
-                                                      Text="setting" />
-
-            <Preview:BindableApplicationBarIconButton Command="{Binding Main.AcceptDialEdit, Mode=OneWay, Source={StaticResource Locator}}"
-                                                      IconUri="/Images/appbar.check.rest.png"
-                                                      IsEnabled="{Binding IsDialEdit}"
-                                                      Text="accept" />-->
-
-      <!--<Preview:BindableApplicationBar.MenuItems>
-                <Preview:BindableApplicationBarMenuItem  Text="about"
-                                                         Command="{Binding ShowAbout}" />
-            </Preview:BindableApplicationBar.MenuItems>-->
     </Preview:BindableApplicationBar>
   </Grid>
 
-  <!--Sample code showing usage of ApplicationBar-->
-  <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1" />
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2" />
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1" />
-                <shell:ApplicationBarMenuItem Text="MenuItem 2" />
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
 </phone:PhoneApplicationPage>

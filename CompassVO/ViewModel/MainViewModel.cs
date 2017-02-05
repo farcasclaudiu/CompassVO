@@ -28,6 +28,7 @@ namespace CompassVO.ViewModel
     private double initDialAngleDrag = 0;
     private double startDialAngle = 0;
     private double deltaDialAngle = 0;
+    private bool hadShownWarningCompassSensor;
 
     #region Public Properties
 
@@ -908,7 +909,11 @@ namespace CompassVO.ViewModel
       }
       else
       {
-        MessageBox.Show("Your device doesn't have compass sensor!");
+        if (!hadShownWarningCompassSensor)
+        {
+          hadShownWarningCompassSensor = true;
+          MessageBox.Show("Your device doesn't have compass sensor!");
+        }
       }
     }
 
