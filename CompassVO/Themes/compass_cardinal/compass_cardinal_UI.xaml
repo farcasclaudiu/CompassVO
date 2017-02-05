@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="CompassVO.Themes.compass_cardinal.compass_cardinal_UI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480"
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+  <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+    <StackPanel Margin="0, 24, 0, 0"
+                    HorizontalAlignment="Center">
+      <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                       HorizontalAlignment="Center">magnetic heading:</TextBlock>
+      <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Text="{Binding Path=MagneticHeading, Mode=OneWay, StringFormat='0'}"
+                           HorizontalAlignment="Center"
+                           Margin="0, 0, 0, 0" />
+        <TextBlock>°</TextBlock>
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Margin="6, 0, 0, 0"
+                           Text="{Binding Path=MagneticCardinalDirection, Mode=OneWay}"
+                           HorizontalAlignment="Center" />
+      </StackPanel>
+      <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                       HorizontalAlignment="Center">true heading:</TextBlock>
+      <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Text="{Binding Path=TrueHeading, Mode=OneWay, StringFormat='0'}"
+                           HorizontalAlignment="Center"
+                           Margin="0, 0, 0, 0" />
+        <TextBlock>°</TextBlock>
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Margin="6, 0, 0, 0"
+                           Text="{Binding Path=TrueCardinalDirection, Mode=OneWay}"
+                           HorizontalAlignment="Center" />
+      </StackPanel>
+      <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                       HorizontalAlignment="Center">magnetic declination:</TextBlock>
+      <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Text="{Binding Path=MagneticDeclination, Mode=OneWay, StringFormat='0'}"
+                           HorizontalAlignment="Center"
+                           Margin="0, 0, 0, 0" />
+        <TextBlock>°</TextBlock>
+      </StackPanel>
+      <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                       HorizontalAlignment="Center">accuracy:</TextBlock>
+      <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+        <TextBlock Style="{StaticResource PhoneTextTitle3Style}"
+                           Text="{Binding Path=HeadingAccuracy, Mode=OneWay, StringFormat='0'}"
+                           HorizontalAlignment="Center"
+                           Margin="0, 0, 0, 0" />
+        <TextBlock>°</TextBlock>
+      </StackPanel>
+    </StackPanel>
+    <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              Width="410"
+              Height="410"
+              Margin="0,290,0,0.3"
+              Opacity="1">
+      <Image Height="410"
+                   x:Name="imgCompass"
+                   Stretch="UniformToFill"
+                   Width="410"
+                   Source="images\compass_old_needle.png"
+                   Margin="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   CacheMode="BitmapCache">
+        <Image.RenderTransform>
+          <RotateTransform x:Name="needleRotation" Angle="0"
+                                     CenterX="205"
+                                     CenterY="205" />
+        </Image.RenderTransform>
+      </Image>
+    </Grid>
+  </Grid>
+</UserControl>

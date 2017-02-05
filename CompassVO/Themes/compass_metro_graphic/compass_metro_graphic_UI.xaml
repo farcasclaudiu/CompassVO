@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="CompassVO.Themes.compass_orienteering.compass_metro_graphic_UI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480"
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
+  <UserControl.Resources>
+    <Style x:Key="textMetroGraphic"
+               TargetType="TextBlock">
+      <Setter Property="Foreground"
+                    Value="{StaticResource PhoneAccentColor}" />
+      <Setter Property="Margin"
+                    Value="0,12,0,0" />
+      <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+      <Setter Property="FontSize"
+                    Value="28" />
+    </Style>
+  </UserControl.Resources>
+  <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+    <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Margin="0, 100, 0, 0">
+      <TextBlock Style="{StaticResource textMetroGraphic}">compass heading</TextBlock>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <TextBlock Text="{Binding NeedleAngle, Mode=OneWay, StringFormat='0'}"
+                           Style="{StaticResource textMetroGraphic}" />
+        <TextBlock Style="{StaticResource textMetroGraphic}" Margin="0, 12, 0, 0">°</TextBlock>
+        <TextBlock Margin="12, 12, 0, 0"
+                           Text="{Binding NeedleCardinalDirection, Mode=OneWay}"
+                           Style="{StaticResource textMetroGraphic}" />
+      </StackPanel>
+    </StackPanel>
+    <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              Width="410"
+              Height="410"
+              Margin="0,280,0,0.3"
+              Opacity="1">
+      <Canvas Height="410"
+                    x:Name="needleCompass"
+                    Width="410"
+                    Margin="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    CacheMode="BitmapCache">
+        <Canvas.RenderTransform>
+          <RotateTransform x:Name="needleRotation" Angle="0"
+                                     CenterX="205"
+                                     CenterY="205" />
+        </Canvas.RenderTransform>
+        <Ellipse StrokeThickness="2"
+                         Stroke="{StaticResource PhoneAccentBrush}"
+                         Width="410"
+                         Height="410" />
+        <Line Canvas.Left="205"
+                      Canvas.Top="205"
+                      Stroke="{StaticResource PhoneAccentBrush}"
+                      StrokeThickness="2"
+                      X1="0"
+                      Y1="0"
+                      X2="0"
+                      Y2="-170" />
+        <TextBlock Canvas.Top="4"
+                           Canvas.Left="197"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           FontWeight="Bold">N</TextBlock>
+      </Canvas>
+    </Grid>
+  </Grid>
+</UserControl>

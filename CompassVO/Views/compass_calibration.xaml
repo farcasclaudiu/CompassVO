@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="CompassVO.Views.compass_calibration"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+  <Grid x:Name="LayoutRoot">
+    <!--Calibration UI-->
+    <StackPanel Name="calibrationStackPanel">
+      <Image Source="/Images/calibrate_compass.png"
+                   Opacity=".95"
+                   HorizontalAlignment="Center" />
+      <TextBlock FontSize="24" TextWrapping="Wrap"
+                       TextAlignment="Center">The compass on your device needs to be calibrated.
+                        Hold the device in front of you and sweep it through a figure 8 pattern as shown
+                        until the calibration is complete.</TextBlock>
+      <StackPanel Orientation="Horizontal"
+                        Margin="0,24"
+                        HorizontalAlignment="Center">
+        <TextBlock FontSize="24">heading accuracy:</TextBlock>
+        <TextBlock Name="calibrationTextBlock"
+                           FontSize="24"
+                           Text="{Binding Path=HeadingAccuracy, Mode=OneWay}" />
+      </StackPanel>
+    </StackPanel>
+    <!--End Calibration UI-->
+  </Grid>
+</UserControl>
