@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Just Windows Phone")]
 [assembly: AssemblyProduct("Compass VO")]
-[assembly: AssemblyCopyright("Copyright © Just Windows Phone 2011")]
+[assembly: AssemblyCopyright("Copyright © Just Windows Phone 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
