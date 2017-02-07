@@ -151,6 +151,9 @@
     <Compile Include="Model\Messages\UpdateCompassUIMessage.cs" />
     <Compile Include="Model\OperationModeEnum.cs" />
     <Compile Include="Model\QuitException.cs" />
+    <Compile Include="PrivacyPolicy.xaml.cs">
+      <DependentUpon>PrivacyPolicy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CompassEx.cs" />
     <Compile Include="Service\CompassReadingEx.cs" />
@@ -207,6 +210,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PrivacyPolicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,6 +256,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Assets\Docs\privacy_policy.html" />
     <Content Include="Resources\Fonts\LCDMU.TTF">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -48,13 +48,13 @@
         <TextBlock>
                     Version: 1.2.0.0
         </TextBlock>
-        <TextBlock FontSize="16">
+        <!--<TextBlock FontSize="16">
                     ChangeLog:<LineBreak />
                     - multiple fixes: (heading declinations, calibration crash)<LineBreak />
                     - tweaks on orienteering theme<LineBreak />
                     - new themes: digital and night<LineBreak />
                     - new feature: taking map photo by hardware camera button<LineBreak />
-        </TextBlock>
+        </TextBlock>-->
         <TextBlock Margin="0, 12, 0, 6">
                 Carefully designed by
         </TextBlock>
@@ -111,6 +111,17 @@
         <TextBlock>
                     Thank you for your feedback and ideas!
         </TextBlock>
+        <Button Width="300"
+                        HorizontalAlignment="Left"
+                        Margin="-10, 6, 0, 0"
+                        x:Name="btnPrivacyPolicy"
+                        Content="privacy policy">
+          <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Click">
+              <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding Path=PrivacyPolicyCommand, Mode=OneWay}" />
+            </i:EventTrigger>
+          </i:Interaction.Triggers>
+        </Button>
       </StackPanel>
     </Grid>
   </Grid>

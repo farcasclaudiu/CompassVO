@@ -630,6 +630,8 @@ namespace CompassVO.ViewModel
     public RelayCommand MainPageLoaded { get; set; }
     public RelayCommand AcceptDialEdit { get; set; }
     public RelayCommand SendFeedbackCommand { get; set; }
+    public RelayCommand PrivacyPolicyCommand { get; set; }
+    
     public RelayCommand RateMeCommand { get; set; }
     public RelayCommand OpenWebPageCommand { get; set; }
     public RelayCommand OpenWebPageVOCommand { get; set; }
@@ -677,6 +679,7 @@ namespace CompassVO.ViewModel
         MainPageLoaded = new RelayCommand(() => MainPageLoadedAction());
         AcceptDialEdit = new RelayCommand(() => AcceptDialEditAction());
         SendFeedbackCommand = new RelayCommand(() => SendFeedbackAction());
+        PrivacyPolicyCommand = new RelayCommand(() => PrivacyPolicyAction());
         RateMeCommand = new RelayCommand(() => RateMeAction());
         OpenWebPageCommand = new RelayCommand(() => OpenWebPageAction());
         OpenWebPageVOCommand = new RelayCommand(() => OpenWebPageVOAction());
@@ -844,6 +847,11 @@ namespace CompassVO.ViewModel
       emailTask.To = Constants.JWP_SUPPORT_EMAIL;
       emailTask.Body = "Hi Just Windows Phone!" + Environment.NewLine + Environment.NewLine + "Hereby my feedback:" + Environment.NewLine + "- " + Environment.NewLine + Environment.NewLine + "See ya!";
       emailTask.Show();
+    }
+
+    private void PrivacyPolicyAction()
+    {
+      App.Locator.NavigationService.NavigateTo(new Uri("/PrivacyPolicy.xaml", UriKind.Relative));
     }
 
     private void RateMeAction()
